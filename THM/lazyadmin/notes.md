@@ -16,7 +16,7 @@ author: MatDef
 
   
 
-### Nmapscan  
+### Nmap 
 
 ```bash
 nmap 10.10.203.28 -sC -sV | tee nmap.log
@@ -41,7 +41,7 @@ Nmap done: 1 IP address (1 host up) scanned in 13.90 seconds
 ```
 
 
-### Enumeration
+## Enumeration
 
 ### Nikito
 
@@ -62,7 +62,7 @@ searchsploit sweetrice
 ```
 ->SweetRice 1.5.1- Backup disclosure on '\http://10.10.203.28/content/inc/mysql_backup/'
 -> SweetRice 1.5.1 - Cross-Site Request Forgery / PHP Code Execution 
-## Exploitation
+# Exploitation
 
 mysqlbackup has manager password:
 `manager:42f749ade7f9e195bf475f37a44cafcb`
