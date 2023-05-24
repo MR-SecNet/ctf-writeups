@@ -22,7 +22,7 @@ author: MatDef
 
 # Exploitation
 Using Metasploit
-![](./images/20230524143344.png)
+![](./images/20230524143409.png)
 
 
 # Privilege Escaltion
