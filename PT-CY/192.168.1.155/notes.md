@@ -14,6 +14,20 @@ author: MatDef
 
 ### Nmap
 ```shell
+PORT     STATE SERVICE VERSION
+23/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 208bfc9ed92e28226b2e0ee372c5bb52 (RSA)
+|   256 cdbd45d85ce48cb691e539a966cbd798 (ECDSA)
+|_  256 2fbad5e59fa243e53b242c10c20ada66 (ED25519)
+80/tcp   open  http    WSGIServer 0.1 (Python 2.7.12)
+|_http-title: Bulldog Industries
+8080/tcp open  http    WSGIServer 0.1 (Python 2.7.12)
+|_http-title: Bulldog Industries
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+```
+
+```shell
 nmap 192.168.1.155 -A -Pn -p- --script=vuln 
 
 Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-29 12:02 CEST
@@ -146,6 +160,8 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 529.43 seconds
 
 ```
+
+
 --> http-enum
 /robots.txt
 ```shell
@@ -166,9 +182,7 @@ Nmap done: 1 IP address (1 host up) scanned in 529.43 seconds
 
 ```
 -->/dev/
-SCREENSHOT
-
-![](./2023-05-29 12_46_40-kali-linux-2022.4 main (before kkklick) [Running] - Oracle VM VirtualBox.png)
+![](./images/web_dev.png)
 -->
 ```html
 <!--Need these password hashes for testing. Django's default is too complex-->
@@ -186,6 +200,7 @@ SCREENSHOT
 ddf45997a7e18a25ad5f5cf222da64814dd060d5:bulldog          
 d8b8dd5e7f000b8dea26ef8428caf38c04466b3e:bulldoglover   
 ``` 
+
 
 --> Bulldog Industries got hacked by German Shepard Hack Team (robots.txt); Security Team got fired; Instead of ssh: Webshell with specific valid commands
 
@@ -243,7 +258,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ```
 --> /admin : Login
 --> /notice : informations
--->
+![](./images/web_notice.png)
 
 ```shell
 gobuster dir -u http://192.168.1.1/dev/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt | tee gobuster_dev 
@@ -272,9 +287,9 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ```
 # Exploitation
 Used One of the User-Passwords to authenticate to use the web shell.
-![](./images/2023-05-29 13_34_21-kali-linux-2022.4 main (before kkklick) [Running] - Oracle VM VirtualBox.png)
+![](./images/web_shell.png)
 Chaining Commands doesn't work with ; but with &&. -> Filtering/Sanitization doesn't work properly
-![](./images/2023-05-29 13_39_47-kali-linux-2022.4 main (before kkklick) [Running] - Oracle VM VirtualBox.png)
+![](./images/web_shell_ls.png)
 Several ways to continue.
 
 Writing a perl Reverse shell with Reverse Shell Generator (www.revshells.com):
