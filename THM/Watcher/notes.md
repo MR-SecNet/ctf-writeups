@@ -57,7 +57,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 
 ## Website
-![](images/Pasted image 20230707155443.png)
+![](/images/Pasted image 20230707155443.png)
 
 
 Niktoscan
