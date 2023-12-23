@@ -101,9 +101,9 @@ Niktoscan
 - ftpuser
 - will
 -> Sensitive file: Secret file do not read
-![](images/20230707162723.png)
+  ![](images/20230707162723.png)
 -> Access to ftp
-![](images/20230707163026.png)
+  ![](images/20230707163026.png)
 ##### flag_2.txt
 ![](images/20230707163105.png)
 #### Local File Inclusion
