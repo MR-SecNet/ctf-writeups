@@ -62,9 +62,10 @@ INSERT INTO `students` (`StudentRegno`, `studentPhoto`, `password`, `studentName
 # Exploitation
 Upload php-reverse-shell on the studentphoto-upload field and got Access
 Found backup.sh which is also in crontab (runing every minute)
+
 ![](images/crontab.png)
 
-Linpeas:
+###Linpeas:
 
 ![](images/mysql_password.png)
 phpMyAdmin: grimmie:My_V3ryS3cur3_P4ss
