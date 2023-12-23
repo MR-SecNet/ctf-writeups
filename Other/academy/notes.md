@@ -64,6 +64,7 @@ Found backup.sh which is also in crontab (runing every minute)
 ![](images/crontab.png)
 
 Linpeas:
+
 ![](images/mysql_password.png)
 phpMyAdmin: grimmie:My_V3ryS3cur3_P4ss
 
