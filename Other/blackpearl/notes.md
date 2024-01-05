@@ -91,6 +91,7 @@ Description:
 ```
 ![](images/foothold_meterpreter.png)
 
+## Privilege Escaltion
 ### Linpeas 
 
 ```shell

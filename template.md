@@ -18,6 +18,9 @@ author: "MatDef"
 ### nmap
 ```bash
 ```
+# Exploitation
+
+## Privilege Escalation
 
 ---
 
