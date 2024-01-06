@@ -3,7 +3,7 @@ title:
 
 difficulty: 
 
-date: "YYYY-MM-DD"
+date: "202X-DD-MM"
 
 author: "MatDef"
 
@@ -16,8 +16,10 @@ author: "MatDef"
 ## Enumeration
 
 ### nmap
-```bash
+```shell
 ```
+
+
 # Exploitation
 
 ## Privilege Escalation
